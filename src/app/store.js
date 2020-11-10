@@ -1,11 +1,15 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { spot, spots, search } from "./SpotSearch/store";
+import spot from "./components/spot/spotSlice";
+import spots from "./components/spots/spotsSlice";
+import search from "./components/search/searchSlice";
+import checkout from "./components/checkout/checkoutSlice";
 
 const createReducer = () =>
   combineReducers({
     spot,
     spots,
-    search
+    search,
+    checkout,
   });
 
 if (process.env.NODE_ENV === "development" && module.hot) {
@@ -24,9 +28,9 @@ if (process.env.NODE_ENV === "development") {
 
 const store = configureStore({
   reducer: createReducer(),
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(middlewares),
-  devTools: process.env.NODE_ENV === "development"
+  devTools: process.env.NODE_ENV === "development",
 });
 
 export default store;

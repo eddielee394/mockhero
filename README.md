@@ -1,7 +1,7 @@
 # Structure
 - home
 - search
-    - SpotList
+    - Spots
         - SpotListItems
     - map
     - info-drawer
