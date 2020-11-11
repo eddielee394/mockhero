@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import Api from "../../services/api";
+import Api from "../../../services/api";
 
 export const getSpot = createAsyncThunk("spot/getSpot", async routeParams => {
   const { spot_id } = routeParams;
@@ -11,7 +11,10 @@ export const getSpot = createAsyncThunk("spot/getSpot", async routeParams => {
 });
 
 const initialState = {
-  showSpotDetailsModal: false
+  showSpotDetailsModal: false,
+  isLoading: false,
+  hasError: false,
+  selected: null
 };
 
 const spotSlice = createSlice({
@@ -24,9 +27,19 @@ const spotSlice = createSlice({
     resetState: () => initialState
   },
   extraReducers: {
+    [getSpot.pending]: (state, action) => ({
+      ...state,
+      isLoading: true
+    }),
     [getSpot.fulfilled]: (state, action) => ({
       ...state,
+      isLoading: false,
       selected: action.payload.selected
+    }),
+    [getSpot.rejected]: (state, action) => ({
+      ...state,
+      isLoading: false,
+      hasError: true
     })
   }
 });

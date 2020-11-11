@@ -1,6 +1,6 @@
-import { spotData } from "../../../_data/data";
+import { spotData } from "../../../../_data/data";
 import { toggleSpotDetailsModal, resetState, getSpot } from "./spotSlice";
-import store from "../../store";
+import store from "../../../store";
 
 afterEach(() => {
   store.dispatch(resetState());
@@ -44,8 +44,34 @@ describe("spotSlice tests", () => {
       expect(getSpot.typePrefix).toEqual(expectedActionTypePrefix);
     });
 
+    it("should update spot state to hasError when getSpot promise is rejected", async () => {
+      const action = {
+        type: "spot/getSpot/rejected",
+        payload: null
+      };
+
+      await store.dispatch(action);
+
+      state = store.getState().spot;
+
+      expect(state.hasError).toBeTruthy();
+    });
+
+    it("should update spot state to loading when getSpot promise is pending", async () => {
+      const action = {
+        type: "spot/getSpot/pending",
+        payload: spotData.selected
+      };
+
+      await store.dispatch(action);
+
+      state = store.getState().spot;
+
+      expect(state.isLoading).toBeTruthy();
+    });
+
     it("should update the spot.selected state when promise is fulfilled", async () => {
-      await store.dispatch(getSpot(1));
+      await store.dispatch(getSpot(spotData.selected.spotId));
 
       state = store.getState().spot;
 

@@ -11,7 +11,7 @@ import { DirectionsWalk } from "@material-ui/icons";
 import { RoundedButton } from "../ui/roundedButton/RoundedButton";
 import { generateSpotDisplayRate } from "../../utils/utils";
 import { SpotRating } from "./SpotRating";
-import { getSpot, toggleSpotDetailsModal } from "./spotSlice";
+import { getSpot, toggleSpotDetailsModal } from "./store/spotSlice";
 
 const useStyles = makeStyles(theme => ({
   card: {

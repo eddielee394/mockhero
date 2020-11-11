@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Spot from "../spot/Spot";
 import { getSpots, selectSpots } from "./spotsSlice";
-import { getSpot } from "../spot/spotSlice";
+import { getSpot } from "../spot/store/spotSlice";
 
 const Spots = () => {
   const spots = useSelector(({ spots }) => spots);

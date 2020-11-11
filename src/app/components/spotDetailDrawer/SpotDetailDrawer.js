@@ -11,7 +11,7 @@ import {
   generateSpotDisplayRate,
   parseImageUrlTemplate
 } from "../../utils/utils";
-import { getSpot, toggleSpotDetailsModal } from "../spot/spotSlice";
+import { getSpot, toggleSpotDetailsModal } from "../spot/store/spotSlice";
 import { SpotRating } from "../spot/SpotRating";
 import { SpotDetailDrawerFooter } from "./SpotDetailDrawerFooter";
 

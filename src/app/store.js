@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import spot from "./components/spot/spotSlice";
+import spot from "./components/spot/store/spotSlice";
 import spots from "./components/spots/spotsSlice";
 import search from "./components/search/searchSlice";
 import checkout from "./components/checkout/checkoutSlice";
